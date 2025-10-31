@@ -1,0 +1,115 @@
+/* ===== 全体レイアウト ===== */
+body {
+  font-family: "Hiragino Sans", "Noto Sans JP", sans-serif;
+  background: #f8f9fa;
+  color: #333;
+  text-align: center;
+  padding: 40px 20px;
+  margin: 0;
+}
+
+/* ===== タイトル ===== */
+h1 {
+  font-size: 26px;
+  margin-bottom: 20px;
+  color: #222;
+}
+
+/* ===== 問題文 ===== */
+#question {
+  font-size: 24px;
+  font-weight: bold;
+  background: #fff;
+  border-radius: 8px;
+  display: inline-block;
+  padding: 15px 25px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  margin: 20px 0;
+}
+
+/* ===== 入力欄 ===== */
+input {
+  font-size: 18px;
+  padding: 10px;
+  width: 260px;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+  transition: border-color 0.3s;
+}
+
+input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+/* ===== ボタン共通デザイン ===== */
+button {
+  font-size: 16px;
+  padding: 10px 25px;
+  margin: 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s;
+  min-width: 120px;
+}
+
+/* ===== ボタン色分け ===== */
+#actionBtn {
+  background: #007bff;
+  color: white;
+}
+
+#actionBtn:hover {
+  background: #0069d9;
+}
+
+#retryBtn {
+  background: #ffc107;
+  color: #333;
+}
+
+#retryBtn:hover {
+  background: #e0a800;
+}
+
+#endBtn {
+  background: #dc3545;
+  color: white;
+}
+
+#endBtn:hover {
+  background: #c82333;
+}
+
+/* ===== 結果表示 ===== */
+#result {
+  font-size: 20px;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+/* 正解・不正解の色 */
+#result:contains("正解") {
+  color: #28a745;
+}
+
+#result:contains("不正解") {
+  color: #dc3545;
+}
+
+/* ===== スマホ対応 ===== */
+@media (max-width: 600px) {
+  body {
+    padding: 20px 10px;
+  }
+
+  input {
+    width: 90%;
+  }
+
+  button {
+    width: 80%;
+    font-size: 18px;
+  }
+}

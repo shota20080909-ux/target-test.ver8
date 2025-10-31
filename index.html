@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>教師用 単語テスト登録</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>教師用 単語テスト登録</h1>
+
+    <textarea id="wordInput" placeholder="日本語:英語 の形式で入力（1行1問）"></textarea>
+    <button id="saveWords">単語を保存</button>
+
+    <h2>登録済み単語一覧</h2>
+    <ul id="wordList"></ul>
+
+    <a href="student.html" class="student-link">👉 生徒用ページはこちら</a>
+  </div>
+
+  <script>
+    const wordInput = document.getElementById('wordInput');
+    const saveBtn = document.getElementById('saveWords');
+    const wordList = document.getElementById('wordList');
+
+    function loadWords() {
+      const saved = JSON.parse(localStorage.getItem('words')) || [];
+      wordList.innerHTML = '';
+      saved.forEach(w => {
+        const li = document.createElement('li');
+        li.textContent = `${w.jp} → ${w.en}`;
+        wordList.appendChild(li);
+      });
+    }
+
+    saveBtn.addEventListener('click', () => {
+      const lines = wordInput.value.trim().split('\n');
+      const words = lines.map(line => {
+        const [jp, en] = line.split(':').map(s => s.trim());
+        return { jp, en };
+      }).filter(w => w.jp && w.en);
+
+      localStorage.setItem('words', JSON.stringify(words));
+      alert('単語を保存しました！');
+      loadWords();
+      wordInput.value = '';
+    });
+
+    loadWords();
+  </script>
+</body>
+</html>
